@@ -19,6 +19,11 @@ jobs:
       run:
         shell: bash
     steps:
+    - name: set lower case owner name
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+          IMAGE_NAME: '${{ github.repository_owner }}'
     - name: Checkout
       uses: actions/checkout@v3
 
